@@ -3,8 +3,6 @@ import openpyxl
 import pyperclip
 import pyautogui
 from time import sleep
-import keyboard
-import sys
 import tkinter as tk
 import threading    
 
@@ -24,139 +22,130 @@ print("""
 print('========Para finalizar a execução do programa, feche a janela do prompt de comando==========')
 print('Para evitar erros, finalize o programa somente nos 5 segunos onde ele se encontra parado ao começar um novo produto!')
 
-def fechar():
-    if keyboard.is_pressed('esc'):
-        return
+def programa():  
+            for linha in pagina_produtos.iter_rows(min_row=2):
+                nome_produto = linha[0].value
+                pyperclip.copy(nome_produto)
+                pyautogui.click(1414,184,duration=0.5)
+                pyautogui.hotkey('tab')
+                pyautogui.hotkey('ctrl','v')
 
-def exit():
-    sys.exit()
+                descricao = linha[1].value
+                pyperclip.copy(descricao)
+                pyautogui.hotkey('tab')
+                pyautogui.hotkey('ctrl','v')
 
-def programa(): 
-    
-    for linha in pagina_produtos.iter_rows(min_row=2):
-        nome_produto = linha[0].value
-        pyperclip.copy(nome_produto)
-        pyautogui.click(1414,184,duration=0.5)
-        pyautogui.hotkey('tab')
-        pyautogui.hotkey('ctrl','v')
+                categoria = linha[2].value
+                pyperclip.copy(categoria)
+                pyautogui.hotkey('tab')
+                pyautogui.hotkey('ctrl','v')
 
-        descricao = linha[1].value
-        pyperclip.copy(descricao)
-        pyautogui.hotkey('tab')
-        pyautogui.hotkey('ctrl','v')
+                codigo_produto = linha[3].value
+                pyperclip.copy(codigo_produto)
+                pyautogui.hotkey('tab')
+                pyautogui.hotkey('ctrl', 'v')
 
-        categoria = linha[2].value
-        pyperclip.copy(categoria)
-        pyautogui.hotkey('tab')
-        pyautogui.hotkey('ctrl','v')
+                peso = linha[4].value
+                pyperclip.copy(peso)
+                pyautogui.hotkey('tab')
+                pyautogui.hotkey('ctrl', 'v')
 
-        codigo_produto = linha[3].value
-        pyperclip.copy(codigo_produto)
-        pyautogui.hotkey('tab')
-        pyautogui.hotkey('ctrl', 'v')
+                dimensoes = linha[5].value
+                pyperclip.copy(dimensoes)
+                pyautogui.hotkey('tab')
+                pyautogui.hotkey('ctrl', 'v')
 
-        peso = linha[4].value
-        pyperclip.copy(peso)
-        pyautogui.hotkey('tab')
-        pyautogui.hotkey('ctrl', 'v')
+                pyautogui.hotkey('tab')
+                pyautogui.hotkey('enter')
+                sleep(2)
 
-        dimensoes = linha[5].value
-        pyperclip.copy(dimensoes)
-        pyautogui.hotkey('tab')
-        pyautogui.hotkey('ctrl', 'v')
+                preco = linha[6].value
+                pyperclip.copy(preco)
+                pyautogui.hotkey('tab')
+                pyautogui.hotkey('ctrl', 'v')
 
-        pyautogui.hotkey('tab')
-        pyautogui.hotkey('enter')
-        sleep(2)
+                quantidade_em_estoque = linha[7].value
+                pyperclip.copy(quantidade_em_estoque)
+                pyautogui.hotkey('tab')
+                pyautogui.hotkey('ctrl', 'v')
 
-        preco = linha[6].value
-        pyperclip.copy(preco)
-        pyautogui.hotkey('tab')
-        pyautogui.hotkey('ctrl', 'v')
+                data_de_validade = linha[8].value
+                pyperclip.copy(data_de_validade)
+                pyautogui.hotkey('tab')
+                pyautogui.hotkey('ctrl', 'v')
 
-        quantidade_em_estoque = linha[7].value
-        pyperclip.copy(quantidade_em_estoque)
-        pyautogui.hotkey('tab')
-        pyautogui.hotkey('ctrl', 'v')
+                cor = linha[9].value
+                pyperclip.copy(cor)
+                pyautogui.hotkey('tab')
+                pyautogui.hotkey('ctrl', 'v')
 
-        data_de_validade = linha[8].value
-        pyperclip.copy(data_de_validade)
-        pyautogui.hotkey('tab')
-        pyautogui.hotkey('ctrl', 'v')
+                tamanho = linha[10].value
+                pyautogui.hotkey('tab')
+                pyautogui.hotkey('enter')
 
-        cor = linha[9].value
-        pyperclip.copy(cor)
-        pyautogui.hotkey('tab')
-        pyautogui.hotkey('ctrl', 'v')
+                if tamanho == 'Pequeno':
+                    pyautogui.hotkey('enter')
 
-        tamanho = linha[10].value
-        pyautogui.hotkey('tab')
-        pyautogui.hotkey('enter')
+                elif tamanho == 'Médio':
+                    pyautogui.hotkey('down')
+                    pyautogui.hotkey('enter')
 
-        if tamanho == 'Pequeno':
-            pyautogui.hotkey('enter')
-
-        elif tamanho == 'Médio':
-            pyautogui.hotkey('down')
-            pyautogui.hotkey('enter')
-
-        else:
-            pyautogui.hotkey('down')
-            pyautogui.hotkey('down')
-            pyautogui.hotkey('enter')
+                else:
+                    pyautogui.hotkey('down')
+                    pyautogui.hotkey('down')
+                    pyautogui.hotkey('enter')
 
 
-        material = linha[11].value
-        pyperclip.copy(material)
-        pyautogui.hotkey('tab')
-        pyautogui.hotkey('ctrl', 'v')
+                material = linha[11].value
+                pyperclip.copy(material)
+                pyautogui.hotkey('tab')
+                pyautogui.hotkey('ctrl', 'v')
 
-        pyautogui.hotkey('tab')
-        pyautogui.hotkey('enter')
-        sleep(2)
+                pyautogui.hotkey('tab')
+                pyautogui.hotkey('enter')
+                sleep(2)
 
 
-        fabricante = linha[12].value
-        pyperclip.copy(fabricante)
-        pyautogui.hotkey('tab')
-        pyautogui.hotkey('ctrl', 'v')
+                fabricante = linha[12].value
+                pyperclip.copy(fabricante)
+                pyautogui.hotkey('tab')
+                pyautogui.hotkey('ctrl', 'v')
 
-        pais_origem = linha[13].value
-        pyperclip.copy(pais_origem)
-        pyautogui.hotkey('tab')
-        pyautogui.hotkey('ctrl', 'v')
+                pais_origem = linha[13].value
+                pyperclip.copy(pais_origem)
+                pyautogui.hotkey('tab')
+                pyautogui.hotkey('ctrl', 'v')
 
-        observacoes = linha[14].value
-        pyperclip.copy(observacoes)
-        pyautogui.hotkey('tab')
-        pyautogui.hotkey('ctrl', 'v')
+                observacoes = linha[14].value
+                pyperclip.copy(observacoes)
+                pyautogui.hotkey('tab')
+                pyautogui.hotkey('ctrl', 'v')
 
-        codigo_de_barras = linha[15].value
-        pyperclip.copy(codigo_de_barras)
-        pyautogui.hotkey('tab')
-        pyautogui.hotkey('ctrl', 'v')
+                codigo_de_barras = linha[15].value
+                pyperclip.copy(codigo_de_barras)
+                pyautogui.hotkey('tab')
+                pyautogui.hotkey('ctrl', 'v')
 
-        localizacao_armazem = linha[16].value
-        pyperclip.copy(localizacao_armazem)
-        pyautogui.hotkey('tab')
-        pyautogui.hotkey('ctrl', 'v')
+                localizacao_armazem = linha[16].value
+                pyperclip.copy(localizacao_armazem)
+                pyautogui.hotkey('tab')
+                pyautogui.hotkey('ctrl', 'v')
 
-        pyautogui.hotkey('tab')
-        pyautogui.hotkey('enter')
+                pyautogui.hotkey('tab')
+                pyautogui.hotkey('enter')
 
-        #Produto salvo no banco de dados
-        pyautogui.hotkey('enter')
-        sleep(2)
+                #Produto salvo no banco de dados
+                pyautogui.hotkey('enter')
+                sleep(2)
 
-        #adicionar mais um
-        pyautogui.hotkey('tab')
-        pyautogui.hotkey('enter')
+                #adicionar mais um
+                pyautogui.hotkey('tab')
+                pyautogui.hotkey('enter')
 
-        sleep(5)         
+                sleep(5)        
 
 minha_thread = threading.Thread(target=programa)
 exitt = threading.Thread(target=exit)
-tecla_fechar = threading.Thread(target=fechar)
 
 janela = tk.Tk()
 rotulo = tk.Label(janela, text="Aperte o botão para rodar o programa")
