@@ -6,10 +6,11 @@ from time import sleep
 import tkinter as tk
 import threading    
 
-
+#Integrando a planilha no codigo
 workbook = openpyxl.load_workbook('produtos_ficticios.xlsx')
 pagina_produtos = workbook['Produtos']
 
+#Mensagem que irá aparecer no console
 print("""
            _ _                         _____             
      /\   | | |                       |  __ \            
@@ -20,8 +21,9 @@ print("""
                                                          
                                                           """)
 print('========Para finalizar a execução do programa, feche a janela do prompt de comando==========')
-print('Para evitar erros, finalize o programa somente nos 5 segunos onde ele se encontra parado ao começar um novo produto!')
+print('Para evitar erros, finalize a execução do programa somente nos 5 segunos onde o programa se encontra parado ao começar um novo produto!')
 
+#Codigo do programa de automação
 def programa():  
             for linha in pagina_produtos.iter_rows(min_row=2):
                 nome_produto = linha[0].value
@@ -144,17 +146,18 @@ def programa():
 
                 sleep(5)        
 
+#Criando as threads
 minha_thread = threading.Thread(target=programa)
 exitt = threading.Thread(target=exit)
 
+#Interface gráfica
 janela = tk.Tk()
 rotulo = tk.Label(janela, text="Aperte o botão para rodar o programa")
 rotulo.pack()
-
 botao_continuar = tk.Button(janela, text="Rodar", command=minha_thread.start)
 botao_continuar.pack()
 botao_sair = tk.Button(janela, text="Sair", command=exit)
 botao_sair.pack()
 
-
+#Roda a interface gráfica
 janela.mainloop()

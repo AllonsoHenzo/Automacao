@@ -1,3 +1,5 @@
+#Primeiro prototipo do programa, porem o problema dele é usar cordenadas, então não funcionaria em qualquer pc, criei o "apptab" que é uma versão melhorada usando a tecla tab, fazendo assim, rodar em qualquer pc
+
 import openpyxl
 import pyperclip
 import pyautogui
